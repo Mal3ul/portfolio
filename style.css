@@ -65,7 +65,7 @@
     object-fit: contain;
     display: block;
   }
-  
+
   .icon-menu-sandwich {
     object-fit: contain;
   }
@@ -497,6 +497,11 @@
       width: 200px;
       height: 200px;
     }
+
+    .perso{
+      min-height: 700px;
+    }
+
     .bts-sio,
     .parcours,
     .missions {
@@ -504,3 +509,6 @@
     }
   }
   
+.text-justify {
+  text-align: justify;
+}
