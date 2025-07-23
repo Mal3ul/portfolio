@@ -74,11 +74,12 @@
   }
   /** ===== perso SECTION ===== */
   .perso {
-    height: 90vh;
+    /* height: 100%; */
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top: 80px;
+    padding-bottom: 10px;
     background: linear-gradient(to right, #e0f7fa, #ffffff);
   }
   
@@ -148,7 +149,7 @@
     background-color: #f9f9f9;
     text-align: center;
     margin-top: 37px;
-    flex: 1;
+    /* flex: 1; */
     /* max-height: 100px; */
     /* position: fixed; 
     bottom: 0;
@@ -221,6 +222,12 @@
   }
 
   /** Responsive */
+@media (min-width: 701px) {
+  .perso{
+    min-height: 95vh;
+  }
+}
+
   @media (max-width: 700px) {
     .accueil-flex {
       flex-direction: column;
@@ -234,6 +241,9 @@
     .accueil-droite {
       justify-content: center;
       order: 1;
+    }
+    .perso{
+      min-height: 95vh;
     }
 
     .menu-toggle {
@@ -272,15 +282,13 @@
       height: 200px;
     }
 
-    .perso{
-      min-height: 700px;
-    }
 
     .bts-sio,
     .parcours,
     .missions {
       min-height: calc(100vh - 48px);
     }
+
   }
 
   @media (max-width: 440px) {
