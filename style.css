@@ -1,4 +1,4 @@
-/* Reset de base */
+/** Reset de base */
 * {
     margin: 0;
     padding: 0;
@@ -9,10 +9,13 @@
     font-family: 'Segoe UI', sans-serif;
     background-color: #fdfdfd;
     color: #333;
-    padding-top: 60px; /* Ajuste cette valeur à la hauteur réelle de ton header */
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
   
-  /* ===== NAVBAR ===== */
+  /** ===== NAVBAR ===== */
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -48,7 +51,7 @@
     color: #0077ff;
   }
   
-  /* Menu burger visible en mobile */
+  /** Menu burger visible sur mobile */
   .menu-toggle {
     display: none;
     background: none;
@@ -69,7 +72,7 @@
   .icon-menu-sandwich {
     object-fit: contain;
   }
-  /* ===== perso SECTION ===== */
+  /** ===== perso SECTION ===== */
   .perso {
     height: 90vh;
     display: flex;
@@ -108,8 +111,8 @@
     background-color: #005fcc;
   }
 
-  /* ===== ABOUT SECTION ===== */
-  .about {
+  /** ===== ABOUT SECTION ===== */
+  /* .about {
     padding: 5rem 10%;
     background-color: #f9f9f9;
   }
@@ -130,87 +133,26 @@
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+  } */
+
+
+  /*TODO ===== CONTACT SECTION ===== */
+  .contact-container {
+    max-width: 900px;
+    margin: 0 auto;
   }
 
-  /* ===== SERVICES SECTION ===== */
-  .services {
-    padding: 5rem 10%;
-    background-color: #ffffff;
-  }
-  .services h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
-  .services p {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  .services-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
-  .service-item {
-    background-color: #f0f0f0;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 30%;
-    margin: 1rem;
-    text-align: center;
-  }
-  .service-item h3 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-  .service-item p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-  }
-  /* ===== TESTIMONIALS SECTION ===== */
-  .testimonials {
-    padding: 5rem 10%;
-    background-color: #f9f9f9;
-  }
-  .testimonials h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-  }
-  .testimonials p {
-    text-align: center;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  .testimonial-item {
-    background-color: #ffffff;
-    padding: 2rem;
-    border-radius: 10px;
-    width: 30%;
-    margin: 1rem;
-    text-align: center;
-  }
-  .testimonial-item h3 {
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-  .testimonial-item p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-  }
-  /* ===== CONTACT SECTION ===== */
-  .contact-container {
-    max-width: 90px; /* Réduit la largeur totale */
-    margin: 0 auto;   /* Centre le conteneur */
-  }
-  /* ===== FOOTER ===== */
+  /** ===== FOOTER ===== */
   .footer {
     padding: 1rem 10%;
     background-color: #f9f9f9;
     text-align: center;
+    margin-top: 37px;
+    flex: 1;
+    /* max-height: 100px; */
+    /* position: fixed; 
+    bottom: 0;
+    width: 100%; */
   }
   .footer p {
     font-size: 1.2rem;
@@ -221,14 +163,12 @@
     color: #0077ff;
     transition: color 0.3s ease;
   }
-
   .footer ul {
     list-style: none;
     padding: 0;
     margin-bottom: 1rem;
     text-align: center;
   }
-
   .footer ul li {
     display: inline;
     margin: 0 1rem;
@@ -238,11 +178,11 @@
     
   }
 
-  /* Mise en page accueil */
+  /** Mise en page accueil */
   .accueil-flex {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 40px;
     max-width: 900px;
     margin: 0 auto;
@@ -251,6 +191,7 @@
   .accueil-gauche {
     flex: 1;
     text-align: left;
+    max-width: 60%;
   }
 
   .accueil-gauche h2 {
@@ -279,7 +220,7 @@
     box-shadow: 0 2px 12px rgba(33,150,243,0.15);
   }
 
-  /* Responsive */
+  /** Responsive */
   @media (max-width: 700px) {
     .accueil-flex {
       flex-direction: column;
@@ -293,6 +234,52 @@
     .accueil-droite {
       justify-content: center;
       order: 1;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-links {
+      position: fixed;
+      top: 80px;
+      right: 0;
+      background: #f8f9fa;
+      flex-direction: column;
+      width: 180px;
+      align-items: flex-start;
+      padding: 20px 0 20px 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      display: none;
+      z-index: 1200;
+      transition: background 0.3s;
+    }
+    .nav-links.active {
+      display: flex;
+    }
+    .nav-links li a {
+      color: #2F2F2F !important;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links li a:hover {
+      color: #2196f3 !important;
+    }
+    .navbar {
+      position: relative;
+    }
+    .photo-rond {
+      width: 200px;
+      height: 200px;
+    }
+
+    .perso{
+      min-height: 700px;
+    }
+
+    .bts-sio,
+    .parcours,
+    .missions {
+      min-height: calc(100vh - 48px);
     }
   }
 
@@ -320,28 +307,7 @@
     }
   }
 
-  /* Menu hamburger caché par défaut */
-  /* .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    z-index: 1001;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .menu-toggle .icon-menu-sandwich {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    display: block;
-  }
-
-  /* On masque les anciennes barres si elles existent */
+  
   .menu-toggle .bar {
     display: none;
   }
@@ -420,55 +386,6 @@
   .mission p {
     color: #666;
     line-height: 1.6;
-  }
-
-  /* Responsive : menu hamburger visible, menu caché */
-  @media (max-width: 700px) {
-    .menu-toggle {
-      display: flex;
-    }
-    .nav-links {
-      position: fixed;
-      top: 80px;
-      right: 0;
-      background: #f8f9fa;
-      flex-direction: column;
-      width: 180px;
-      align-items: flex-start;
-      padding: 20px 0 20px 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      display: none;
-      z-index: 1200;
-      transition: background 0.3s;
-    }
-    .nav-links.active {
-      display: flex;
-    }
-    .nav-links li a {
-      color: #2F2F2F !important;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links li a:hover {
-      color: #2196f3 !important;
-    }
-    .navbar {
-      position: relative;
-    }
-    .photo-rond {
-      width: 200px;
-      height: 200px;
-    }
-
-    .perso{
-      min-height: 700px;
-    }
-
-    .bts-sio,
-    .parcours,
-    .missions {
-      min-height: calc(100vh - 48px);
-    }
   }
   
 .text-justify {
