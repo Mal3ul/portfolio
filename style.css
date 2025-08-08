@@ -72,6 +72,7 @@
   .icon-menu-sandwich {
     object-fit: contain;
   }
+
   /** ===== perso SECTION ===== */
   .perso {
     /* height: 100%; */
@@ -315,10 +316,11 @@
     }
   }
 
-  
+
   .menu-toggle .bar {
     display: none;
   }
+
   header {
     /* background: #222; */
     color: #fff;
@@ -328,7 +330,8 @@
     left: 0;
     width: 100vw;
     z-index: 1100;
-  } */
+  }
+  
   .bts-sio {
     min-height: calc(100vh - 80px); /* 80px = hauteur du header sur desktop */
     display: flex;
