@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nessia.eu/sitemap.xml
+Sitemap: https://www.nessia.eu/sitemap.xml
