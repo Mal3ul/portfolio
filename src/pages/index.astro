@@ -1,0 +1,454 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+  profil,
+  parcours,
+  competences,
+  realisations,
+  langues,
+  qualites,
+} from '../data/cv.js';
+---
+
+<Layout>
+  <main class="sheet">
+    <!-- ======= EN-TÊTE ======= -->
+    <header class="cv-header">
+      <img class="photo" src={profil.photo} alt={`Photo de ${profil.nom}`} />
+      <div class="cv-header__text">
+        <h1>{profil.nom}</h1>
+        <p class="role">{profil.titre}</p>
+        <ul class="contact">
+          <li>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            {profil.ville}
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+            <a href={`mailto:${profil.email}`}>{profil.email}</a>
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
+            </svg>
+            <a href={profil.linkedin} target="_blank" rel="noopener">Nessia Bouchouit</a>
+          </li>
+          <li>
+            <svg class="ic" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <a href={profil.github} target="_blank" rel="noopener">{profil.github.split('/').pop()}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="cv-actions no-print">
+        <a class="btn btn--solid" href={profil.cv} target="_blank" rel="noopener">Télécharger le CV</a>
+        {/* <button class="btn btn--ghost" onclick="window.print()">Imprimer</button> */}
+      </div>
+    </header>
+
+    <!-- ======= PROFIL ======= -->
+    <section class="block">
+      <h2>Profil</h2>
+      <p class="lead">{profil.accroche}</p>
+      <ul class="qualites">
+        {qualites.map((q) => <li>{q}</li>)}
+      </ul>
+    </section>
+
+    <!-- ======= PARCOURS ======= -->
+    <section class="block">
+      <h2>Parcours &amp; Formation</h2>
+      <div class="timeline">
+        {
+          parcours.map((item) => (
+            <article class="tl-item">
+              <div class="tl-marker" />
+              <div class="tl-body">
+                <div class="tl-top">
+                  <h3>{item.titre}</h3>
+                  <span class="tl-period">{item.periode}</span>
+                </div>
+                <p class="tl-meta">
+                  <span class="tl-type">{item.type}</span> · {item.lieu}
+                </p>
+                <p class="tl-desc">{item.description}</p>
+                <ul class="tl-points">
+                  {item.points.map((p) => <li>{p}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ======= COMPÉTENCES ======= -->
+    <section class="block">
+      <h2>Compétences</h2>
+      <div class="skills">
+        {
+          Object.entries(competences).map(([cat, items]) => (
+            <div class="skill-group">
+              <h4>{cat}</h4>
+              <ul class="tags">
+                {items.map((s) => <li>{s}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ======= RÉALISATIONS ======= -->
+    <section class="block">
+      <h2>Réalisations</h2>
+      <div class="cards">
+        {
+          realisations.map((p) => (
+            <article class="card">
+              <h3>{p.nom}</h3>
+              <p>{p.description}</p>
+              <ul class="tags">
+                {p.tags.map((t) => <li>{t}</li>)}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ======= LANGUES ======= -->
+    <section class="block block--last">
+      <h2>Langues</h2>
+      <ul class="langues">
+        {
+          langues.map((l) => (
+            <li>
+              <strong>{l.nom}</strong> - {l.niveau}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    {/* <footer class="cv-footer">
+      <p>© {new Date().getFullYear()} {profil.nom} • Portfolio</p>
+    </footer> */}
+  </main>
+</Layout>
+
+<style>
+  .sheet {
+    width: calc(100% - 2rem);
+    min-height: calc(100vh - 2rem);
+    margin: 1rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 30px rgba(31, 41, 51, 0.1);
+    overflow: hidden;
+  }
+
+  /* ---- En-tête ---- */
+  .cv-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1.75rem;
+    align-items: center;
+    padding: 2.5rem 3rem;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    color: #fff;
+  }
+  .photo {
+    width: 118px;
+    height: 118px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.85);
+  }
+  .cv-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .role {
+    font-size: 1.1rem;
+    opacity: 0.92;
+    margin-bottom: 0.75rem;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  .contact li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .contact a {
+    color: #fff;
+  }
+  .contact span {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    min-width: 1rem;
+    text-align: center;
+  }
+  .contact .ic {
+    width: 16px;
+    height: 16px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .cv-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid #fff;
+    white-space: nowrap;
+    text-align: center;
+    transition: transform 0.15s ease, background 0.2s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .btn--solid {
+    background: #fff;
+    color: var(--accent);
+  }
+  .btn--ghost {
+    background: transparent;
+    color: #fff;
+  }
+  .btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ---- Blocs ---- */
+  .block {
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .block--last {
+    border-bottom: none;
+  }
+  .block h2 {
+    font-size: 1.05rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-soft);
+  }
+  .lead {
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+  .qualites {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .qualites li {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.25rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  /* ---- Timeline parcours ---- */
+  .timeline {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 1.6rem 1.5rem;
+    border-left: 2px solid var(--line);
+  }
+  .tl-item:last-child {
+    padding-bottom: 0;
+  }
+  .tl-marker {
+    position: absolute;
+    left: -7px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--accent-soft);
+  }
+  .tl-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .tl-top h3 {
+    font-size: 1.05rem;
+    color: var(--ink);
+  }
+  .tl-period {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .tl-meta {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0.15rem 0 0.5rem;
+  }
+  .tl-type {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.05rem 0.5rem;
+    border-radius: var(--radius);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .tl-desc {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+  }
+  .tl-points {
+    margin-top: 0.5rem;
+    display: grid;
+    gap: 0.2rem;
+  }
+  .tl-points li {
+    position: relative;
+    padding-left: 1rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .tl-points li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ---- Compétences ---- */
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  .skill-group h4 {
+    font-size: 0.9rem;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tags li {
+    background: #f1f5f9;
+    color: var(--ink-soft);
+    padding: 0.2rem 0.65rem;
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    border: 1px solid var(--line);
+  }
+
+  /* ---- Réalisations ---- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1);
+  }
+  .card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+    color: var(--accent);
+  }
+  .card p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.7rem;
+  }
+
+  /* ---- Langues ---- */
+  .langues {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    color: var(--ink-soft);
+  }
+
+  .cv-footer {
+    padding: 1.25rem 3rem;
+    background: #f8fafc;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 720px) {
+    .sheet {
+      margin: 0;
+      border-radius: 0;
+    }
+    .cv-header {
+      grid-template-columns: 1fr;
+      text-align: center;
+      justify-items: center;
+      padding: 2rem 1.5rem;
+    }
+    .contact {
+      justify-content: center;
+    }
+    .cv-actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .block,
+    .cv-footer {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>

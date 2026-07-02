@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import { profil } from '../data/cv.js';
+
+const {
+  title = 'Nessia Bouchouit - Portfolio',
+  description = 'Portfolio de Nessia Bouchouit, développeuse web en alternance (Bachelor CDA). Découvrez mon parcours, mes compétences et mes réalisations.',
+} = Astro.props;
+
+// URL canonique de la page courante (basée sur `site` dans astro.config.mjs)
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(profil.photo, Astro.site).href;
+
+// Données structurées Schema.org : aide Google à comprendre "qui" est la page
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profil.nom,
+  jobTitle: profil.titre,
+  description,
+  url: canonical,
+  image: ogImage,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Strasbourg',
+    addressRegion: 'Grand Est',
+    addressCountry: 'FR',
+  },
+  email: `mailto:${profil.email}`,
+  sameAs: [profil.linkedin, profil.github],
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO de base -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={profil.nom} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph (Facebook, LinkedIn...) -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="fr_FR" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Données structurées -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

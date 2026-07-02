@@ -1,0 +1,67 @@
+:root {
+  --ink: #1f2933;
+  --ink-soft: #52606d;
+  --muted: #7b8794;
+  --accent: #2563eb;
+  --accent-soft: #e8f0fe;
+  --line: #e4e7eb;
+  --paper: #ffffff;
+  --bg: #eceff3;
+  --radius: 4px;
+  --sheet-max: 900px;
+  font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---- Print : rendu "vrai" CV papier ---- */
+@media print {
+  :root {
+    --bg: #ffffff;
+  }
+  body {
+    background: #fff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .sheet {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+  }
+  section {
+    break-inside: avoid;
+  }
+  a {
+    color: var(--ink);
+  }
+}
