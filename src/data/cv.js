@@ -18,7 +18,7 @@ export const parcours = [
   {
     titre: 'Assistante projet & support',
     lieu: 'Blue Note Systems',
-    periode: '2025 - aujourd\'hui',
+    periode: '2025 - 2026',
     type: 'Alternance',
     description:
       "Alternance en tant qu'assistante projet et support, dans le cadre du Bachelor CDA.",
