@@ -4,7 +4,7 @@ export const profil = {
   nom: 'Nessia Bouchouit',
   titre: 'Apprentie développeuse web',
   accroche:
-    "Diplômée d'un BTS Services Informatiques aux Organisations (option SLAM) et en Concepteur et Développeur d'Applications (CDA), je sui à la recherche d'une alternance dans le cadre d'un master en Management en Ingénieurie Informatique (M2I). Créative et motivée, j'aime concevoir des projets numériques concrets et continuer à progresser dans le développement web.",
+    "Diplômée d'un BTS Services Informatiques aux Organisations (option SLAM) et en Concepteur et Développeur d'Applications (CDA), je suis à la recherche d'une alternance dans le cadre d'un master en Management en Ingénieurie Informatique (M2I). Créative et motivée, j'aime concevoir des projets numériques concrets et continuer à progresser dans le développement web.",
   ville: 'Strasbourg, Grand Est',
   telephone: '07 67 93 22 23',
   email: 'nessia.bouchouit@gmail.com',
